@@ -23,6 +23,8 @@ public interface ILoginRepository extends JpaRepository<UserClass, Integer>{
     
     @Query(value="select count(user_id) from User_class",nativeQuery=true)
 	public int userCount();
+    
+    public UserClass findByEmail(String email);
 	
 	
 	

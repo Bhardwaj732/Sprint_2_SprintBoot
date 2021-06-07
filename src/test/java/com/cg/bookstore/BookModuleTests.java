@@ -31,12 +31,12 @@ public class BookModuleTests extends BookstoreApplicationTests {
 	@Test
 	void getBooksByTitle() {
 
-		Book b = new Book(26, "Maths", "Ramanujan", new Category(11, "Math"), "Mathematics", "#102030", 450.00,
+		Book b = new Book(30, "Maths", "Ramanujan", new Category(11, "Math"), "Mathematics", "#102030", 450.00,
 				LocalDate.now(), LocalDate.now());
 
 		iBookRepository.save(b);
 		List<Book> book1 = iBookRepository.findByTitle("Maths");
-		Optional<Book> book2 = iBookRepository.findById(26);
+		Optional<Book> book2 = iBookRepository.findById(30);
 		assertThat(book2.isPresent()).isEqualTo(!book1.isEmpty());
 	}
 
@@ -56,7 +56,7 @@ public class BookModuleTests extends BookstoreApplicationTests {
 	@Test
 	void delete() {
 		List<Book> book1 = iBookRepository.findAll();
-		iBookService.deleteBook(24);
+		iBookService.deleteBook(5555001);
 		List<Book> book2 = iBookRepository.findAll();
 		assertThat(book1.size() - 1).isEqualTo(book2.size());
 	}

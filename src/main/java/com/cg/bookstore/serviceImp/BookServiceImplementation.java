@@ -70,4 +70,17 @@ public class BookServiceImplementation implements IBookService{
 	public List<Book> listBooksByCategory(String cat){
 		return iBookRepo.findAll();
 	}
+	
+	
+	@Override
+	@Transactional
+	public Book editBookDetails(Book b) throws NoBookException{
+		Optional<Book> book=iBookRepo.findById(b.getBookId());
+		if(book.isEmpty())
+			throw new NoBookException("Entered ID is not found");
+		else {
+		iBookRepo.save(b);
+		return b;
+		}
+	}
 }

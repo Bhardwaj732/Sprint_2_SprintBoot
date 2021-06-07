@@ -8,8 +8,10 @@ import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +24,7 @@ import com.cg.bookstore.service.ICategoryService;
 
 @RestController
 @RequestMapping("/api/v1/category")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CategoryController {
 
 	@Autowired
@@ -63,6 +66,16 @@ public class CategoryController {
 		List<Category> list = iCategoryService.getAllCategories();
 		if (list.size() == 0) {
 			throw new ServiceException("No category data is present in the List !");
+		}
+		return new ResponseEntity<List<Category>>(list, HttpStatus.OK);
+	}
+	
+	@DeleteMapping(path = "/removeCategoryById/{id}")
+	public ResponseEntity<List<Category>> removeCategoryById(@PathVariable Integer id)
+			throws CategoryNotFoundException {
+		List<Category> list = iCategoryService.removeCategoryById(id);
+		if (list.size() == 0) {
+			throw new ServiceException("Deletion is not done as the List is empty");
 		}
 		return new ResponseEntity<List<Category>>(list, HttpStatus.OK);
 	}

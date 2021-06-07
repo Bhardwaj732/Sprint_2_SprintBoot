@@ -39,7 +39,7 @@ public class UserModuleTests extends BookstoreApplicationTests {
 	@Test
 	void testAddUser() {
 		int beforeCreating = iLoginRepository.userCount();
-		UserClass userClass = new UserClass(2, "aditya@gmail.com", "aditya@123", "customer");
+		UserClass userClass = new UserClass(7, "aditya@gmail.com", "aditya@123", "customer");
 		iLoginRepository.save(userClass);
 		int afterCreating = iLoginRepository.userCount();
 		assertThat(afterCreating).isEqualTo(beforeCreating + 1);
@@ -61,7 +61,7 @@ public class UserModuleTests extends BookstoreApplicationTests {
 	@Test
 	void testRemoveUsers() {
 		int count = iLoginRepository.userCount();
-		Optional<UserClass> ol = iLoginRepository.findById(100006);
+		Optional<UserClass> ol = iLoginRepository.findById(6);
 		List<UserClass> list = iLoginService.removeUser(ol.get());
 		assertThat(count - 1).isEqualTo(list.size());
 	}

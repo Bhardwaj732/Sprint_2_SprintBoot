@@ -66,7 +66,7 @@ public class TestCases extends BookstoreApplicationTests {
 	@Test
 	public void testRemoveCategory() {
 		List<Category> beforeRemove = iCategoryRepository.findAll();
-		Category category = iCategoryRepository.findById(20).get();
+		Category category = iCategoryRepository.findById(24).get();
 		iCategoryService.removeCategory(category);
 
 		List<Category> afterRemove = iCategoryRepository.findAll();

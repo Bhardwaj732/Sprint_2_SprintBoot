@@ -72,7 +72,7 @@ public class CustomerControllerTest extends BookstoreApplicationTests {
 		List<Customer> beforeCreation = iCustomerRepository.findAll();
 		UserClass userClass = iLoginRepository.findById(100008).get();
 		Address address = new Address(9, "House No 236", "Jaipur", "India", "400123");
-		Customer customer = new Customer(7, "tanu@gmail.com", "Tanu Kumari", "tanu@456", address, "7878965412",
+		Customer customer = new Customer(10, "tanu@gmail.com", "Tanu Kumari", "tanu@456", address, "7878965412",
 				LocalDate.now(), userClass);
 		iCustomerService.createCustomer(customer);
 		List<Customer> afterCreation = iCustomerRepository.findAll();
@@ -86,7 +86,7 @@ public class CustomerControllerTest extends BookstoreApplicationTests {
 	@Test
 	public void testDeleteCustomer() {
 		List<Customer> beforeDelete = iCustomerRepository.findAll();
-		iCustomerService.deleteCustomer(iCustomerRepository.findById(7).get());
+		iCustomerService.deleteCustomer(iCustomerRepository.findById(10).get());
 		List<Customer> afterDelete = iCustomerRepository.findAll();
 
 		assertThat(beforeDelete.size() - 1).isEqualTo(afterDelete.size());

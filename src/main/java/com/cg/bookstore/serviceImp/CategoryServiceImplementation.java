@@ -50,4 +50,11 @@ public class CategoryServiceImplementation implements ICategoryService {
 			iCategoryRepository.delete(cat);							// delete a particular record
 		return iCategoryRepository.findAll();
 		}
+		
+		
+		@Override
+		public List<Category>  removeCategoryById(Integer id) {
+			iCategoryRepository.deleteById(id);
+			return iCategoryRepository.findAll();
+		}
 }

@@ -26,7 +26,6 @@ public class Customer {
 	 */
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int customerId;
 	
 	private String email;
@@ -48,7 +47,6 @@ public class Customer {
 	@NotNull(message = "Phone number can't be null.")
 	private String mobileNumber;
 	
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@NotNull(message = "Regristration date required")
 	private LocalDate registerOn;
 	

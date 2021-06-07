@@ -15,7 +15,6 @@ public class Address {
 	 */
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int addressId;
 	
 	@NotNull(message = "Address is required.")

@@ -12,5 +12,6 @@ public interface ILoginService {
 	 public List<UserClass> removeUser(UserClass user);
 	 //public Optional<Login> validateUser(Login user);
 	 public UserClass validateUser(Integer userId, String password) throws UserNotFoundException;
+	public UserClass validateCustomer(String email, String password);
 	
 }

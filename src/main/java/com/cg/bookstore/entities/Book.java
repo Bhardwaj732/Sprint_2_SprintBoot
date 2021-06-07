@@ -38,7 +38,7 @@ public class Book {
 	private String author;
 	
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "category_id", referencedColumnName = "categoryId")
 	private Category category;
 	
@@ -51,6 +51,8 @@ public class Book {
 	@NumberFormat
 	@NotNull(message = "Price can't be null.")
 	private double price;
+	
+	private int quantity;
 	
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@NotNull(message = "Publish date must required, it can't be null")
@@ -162,7 +164,13 @@ public class Book {
 		this.lastUpdatedOn = lastUpdatedOn;
 	}
 
+	public int getQuantity() {
+		return quantity;
+	}
 
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 
 	@Override
 	public int hashCode() {

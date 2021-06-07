@@ -16,6 +16,8 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
 
 	@Query(value = "Select c from Customer c")
 	public List<Customer> listCustomers();
+	
+	
 
 	/*
 	 * @Query(value = "select * from Customer WHERE customer_id=:c.customerId",

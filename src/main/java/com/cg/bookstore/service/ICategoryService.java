@@ -10,4 +10,5 @@ public interface ICategoryService {
 	public Category editCategory(Category category);
 	public List<Category> getAllCategories();
 	public List<Category> removeCategory(Category cat);
+	public List<Category>  removeCategoryById(Integer id);
 }

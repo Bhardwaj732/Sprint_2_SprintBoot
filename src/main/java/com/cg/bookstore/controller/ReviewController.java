@@ -6,8 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +23,7 @@ import com.cg.bookstore.service.IReviewService;
 
 @RestController
 @RequestMapping("/api/v1/review")
+@CrossOrigin
 public class ReviewController {
 
 	@Autowired
@@ -41,6 +44,15 @@ public class ReviewController {
 	@DeleteMapping(path = "/deleteReview")
 	public ResponseEntity<List<Review>> deleteReview(@RequestBody Review rev) {
 		List<Review> list = iReviewService.deleteReview(rev);
+		return new ResponseEntity<List<Review>>(list, HttpStatus.OK);
+	}
+	
+	/*
+	 * Delete review
+	 */
+	@DeleteMapping(path = "/removeReviewById/{id}")
+	public ResponseEntity<List<Review>> removeReviewById(@PathVariable Integer id) {
+		List<Review> list = iReviewService.removeReviewById(id);
 		return new ResponseEntity<List<Review>>(list, HttpStatus.OK);
 	}
 

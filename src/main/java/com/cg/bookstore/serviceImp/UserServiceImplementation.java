@@ -52,4 +52,16 @@ public class UserServiceImplementation implements ILoginService{
 			else
 				throw new UserNotFoundException("userID and password does not match");
 		}
+		
+		@Override
+		public UserClass validateCustomer(String email, String password) {
+			UserClass userClass = iLoginRepository.findByEmail(email);
+			if(userClass == null) 
+				throw new UserNotFoundException("please enter valid userId");
+			else if(userClass.getEmail().equals(email) && userClass.getPassword().equals(password))
+				return userClass;
+			else 
+				throw new UserNotFoundException("userID and password does not match");
+		}
+		
 }

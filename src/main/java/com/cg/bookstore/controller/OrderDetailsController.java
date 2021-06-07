@@ -7,11 +7,13 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.bookstore.entities.Book;
@@ -21,6 +23,7 @@ import com.cg.bookstore.service.IOrderService;
 
 @RestController
 @RequestMapping("/api/v1/orderdetails")
+@CrossOrigin                                   //(origins = "http://localhost:4200")
 public class OrderDetailsController {
 
 	@Autowired
@@ -38,6 +41,7 @@ public class OrderDetailsController {
 	/*
 	 * This method returns all the order details.
 	 */
+	@CrossOrigin(origins = "http://localhost:4200", methods = RequestMethod.GET)
 	@GetMapping("/getAllOrders")
 	public ResponseEntity<List<OrderDetails>> listAllOrders() {
 		List<OrderDetails> orderDetails = iOrderService.listAllOrders();
@@ -53,7 +57,7 @@ public class OrderDetailsController {
 	 * This method add a particular order details into database.
 	 */
 	@PostMapping("/addOrder")
-	public OrderDetails addOrder(@RequestBody OrderDetails od) {
+	public OrderDetails addOrder(@Valid @RequestBody OrderDetails od) {
 		return iOrderService.addOrder(od);
 	}
 
@@ -62,7 +66,7 @@ public class OrderDetailsController {
 	 * customer.
 	 */
 	@PostMapping("/listOrderByCustomer")
-	public List<OrderDetails> listOrderByCustomer(@RequestBody Customer cs) {
+	public List<OrderDetails> listOrderByCustomer(@Valid @RequestBody Customer cs) {
 		return iOrderService.listOrderByCustomer(cs);
 	}
 
@@ -71,7 +75,7 @@ public class OrderDetailsController {
 	 * database then it will throw an exception.
 	 */
 	@PutMapping("/updateOrder")
-	public OrderDetails updateOrder(@RequestBody OrderDetails od) {
+	public OrderDetails updateOrder(@Valid @RequestBody OrderDetails od) {
 		return iOrderService.updateOrder(od);
 	}
 
@@ -109,7 +113,7 @@ public class OrderDetailsController {
 	 * database then it will throw an exception.
 	 */
 	@PutMapping("/cancelOrder")
-	public OrderDetails cancelOrder(@RequestBody OrderDetails od) {
+	public OrderDetails cancelOrder(@Valid @RequestBody OrderDetails od) {
 		return iOrderService.cancelOrder(od);
 	}
 

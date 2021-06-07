@@ -109,7 +109,7 @@ public class ReviewTestCases extends BookstoreApplicationTests {
 		List<Review> beforeCreation = iReviewRepository.findAll();
 		Book book = iBookRepository.findById(8).get();
 		Customer customer = iCustomerRepository.findById(80).get();
-		Review newReview = new Review(5, book, customer, "Lot's of nice things", "Amazing one", 6.4, LocalDate.now());
+		Review newReview = new Review(6, book, customer, "Lot's of nice things", "Amazing one", 6.4, LocalDate.now());
 		iReviewService.addReview(newReview);
 		List<Review> afterCreation = iReviewRepository.findAll();
 
@@ -122,7 +122,7 @@ public class ReviewTestCases extends BookstoreApplicationTests {
 	@Test
 	void testDeleteReview() {
 		List<Review> beforeDelete = iReviewRepository.findAll();
-		iReviewService.deleteReview(iReviewRepository.findById(4).get());
+		iReviewService.deleteReview(iReviewRepository.findById(5).get());
 		List<Review> afterDelete = iReviewRepository.findAll();
 
 		assertThat(beforeDelete.size() - 1).isEqualTo(afterDelete.size());

@@ -25,7 +25,6 @@ public class BookOrder {
 	 */
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int orderId;
 	
 	//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -56,6 +55,8 @@ public class BookOrder {
 	//@NotNull(message = "Recipient phone number required.")
 	private String recipientPhone;
 	
+	private String c_id;
+	
 	/*
 	 * Default Constructor
 	 */
@@ -69,7 +70,7 @@ public class BookOrder {
 	 */
 	
 	public BookOrder(int orderId, Customer customer, LocalDate orderDate, double orderTotal, String status,
-			Address shippingAddress, String paymentMethod, String recipientName, String recipientPhone) {
+			Address shippingAddress, String paymentMethod, String recipientName, String recipientPhone, String c_id) {
 		super();
 		this.orderId = orderId;
 		this.customer = customer;
@@ -80,6 +81,7 @@ public class BookOrder {
 		this.paymentMethod = paymentMethod;
 		this.recipientName = recipientName;
 		this.recipientPhone = recipientPhone;
+		this.c_id = c_id;
 	}
 
 	/*
@@ -157,5 +159,15 @@ public class BookOrder {
 	public void setRecipientPhone(String recipientPhone) {
 		this.recipientPhone = recipientPhone;
 	}
+
+	public String getC_id() {
+		return c_id;
+	}
+
+	public void setC_id(String c_id) {
+		this.c_id = c_id;
+	}
+	
+	
 	
 }

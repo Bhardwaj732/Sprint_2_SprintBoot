@@ -13,17 +13,6 @@ public interface IBookService {
 	public List<Book> listBooksByCategory(String cat);
 	public Optional<Book> createBook(Book b);
 	public List<Book> findByTitle(String title);
+	public Book editBookDetails(Book b);
 	
-	
-	
-	
-	
-/*	public Book createBook(Book b);
-	public List<Book> listAllBooks();
-	public Book deleteBook(Book b);
-	public Book editBook(Book b);
-	public Book viewBook(Book b);
-	public List<Book> listBooksByCategory(String cat);
-	
-	*/
 }

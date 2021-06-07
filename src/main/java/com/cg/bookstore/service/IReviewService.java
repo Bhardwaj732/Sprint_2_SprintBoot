@@ -17,5 +17,6 @@ public interface IReviewService {
 	public List<Review> listAllReviewsByBook(Book book);
 	public List<Review> listAllReviewsByCustomer(Customer c);
 	public Book listMostFavoredBooks();
+	public List<Review> removeReviewById(Integer id);
 
 }

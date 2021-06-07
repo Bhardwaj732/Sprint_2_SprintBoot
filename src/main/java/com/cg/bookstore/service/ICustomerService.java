@@ -13,6 +13,7 @@ public interface ICustomerService {
 	public Customer deleteCustomer(Customer customer);
 	public Customer updateCustomer(Customer c);
 	public Customer viewCustomer(Customer c);
+	public List<Customer> deleteCustomerById(Integer id);
 	public List<Customer> listAllCustomersByBook(Book book);
 	
 	

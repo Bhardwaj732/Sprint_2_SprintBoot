@@ -67,6 +67,14 @@ public class ReviewServiceImplementation implements IReviewService{
 	}
 	
 	@Override
+	public List<Review> removeReviewById(Integer id) {
+		
+		iReviewRepository.deleteById(id);                          // delete a particular record
+		return iReviewRepository.findAll();
+	}
+	
+	
+	@Override
 	public Optional<Review> addReview(Review review){
 		
 		iReviewRepository.save(review);                  // create new record

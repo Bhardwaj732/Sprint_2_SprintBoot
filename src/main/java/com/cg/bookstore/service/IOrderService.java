@@ -5,6 +5,7 @@ import java.util.List;
 import com.cg.bookstore.entities.Book;
 import com.cg.bookstore.entities.Customer;
 import com.cg.bookstore.entities.OrderDetails;
+import com.cg.bookstore.entities.UserClass;
 
 public interface IOrderService {
 
